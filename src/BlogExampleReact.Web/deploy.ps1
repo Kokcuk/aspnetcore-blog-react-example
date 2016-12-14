@@ -1,3 +1,8 @@
+Param (
+   [Parameter(Mandatory=$true)][string] $SshHost,
+   [Parameter(Mandatory=$true)][string] $UserName,
+   [Parameter(Mandatory=$true)][string] $Password
+)
 #
 # deploy.ps1
 #
@@ -20,10 +25,8 @@ sz a $publishZip ($publishDir+"\*")
 
 ### upload
 $remotePackagePath = "/tmp"
-$SshHost = "shetip.ru"
-$UserName = "root"
-$password = ConvertTo-SecureString -String “Linux1243” -AsPlainText -Force
-$Crendtial = new-object -typename System.Management.Automation.PSCredential -argumentlist $UserName, $password
+$passwordEnc = ConvertTo-SecureString -String $Password -AsPlainText -Force
+$Crendtial = new-object -typename System.Management.Automation.PSCredential -argumentlist $UserName, $passwordEnc
 $session = New-SFTPSession -ComputerName $SshHost -Credential $Crendtial -Force
 
 Set-SFTPFile -SFTPSession $session -LocalFile $publishZip -RemotePath $remotePackagePath -Overwrite
