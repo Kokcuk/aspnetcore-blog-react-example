@@ -1,0 +1,19 @@
+﻿@using BlogExampleReact.Common.Entities
+@model System.Collections.Generic.List<BlogExampleReact.Common.Entities.ApplicationUserEntity>
+
+<h2>Users</h2>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (ApplicationUserEntity item in Model)
+    {
+        <tr>
+            <td>@item.Email</td>
+            <td><a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-xs btn-primary">Edit</a></td>
+        </tr>
+    }
+</table>
+

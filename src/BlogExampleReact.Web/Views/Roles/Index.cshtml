@@ -1,0 +1,22 @@
+﻿@using System.Threading.Tasks
+@using BlogExampleReact.Common.Entities
+@model System.Collections.Generic.List<BlogExampleReact.Common.Entities.ApplicationRoleEntity>
+
+
+
+<h2>Roles</h2>
+
+<a class="btn btn-primary" asp-action="Edit">Add new</a>
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (ApplicationRoleEntity item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td><a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-xs btn-primary">Edit</a></td>
+        </tr>
+    }
+</table>

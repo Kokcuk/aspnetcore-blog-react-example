@@ -1,0 +1,13 @@
+﻿<div id="app"></div>
+
+@section scripts {
+    <script>
+      var userAuthorized = @User.Identity.IsAuthenticated.ToString().ToLower();
+    </script>
+    <environment names="Development">
+        <script src="http://localhost:8080/index.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/js/index.js"></script>
+    </environment>
+}
