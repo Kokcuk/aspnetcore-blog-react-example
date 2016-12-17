@@ -9,8 +9,8 @@ Param (
 $workDir = get-location
 
 ### buid
+&{npm run build:prod}
 &{dotnet publish}
-&{npm run build}
 ### pack
 $publishDir = Join-Path $workDir "bin\Debug\netcoreapp1.0\publish"
 $publishZip = Join-Path $workDir "bin\Debug\netcoreapp1.0\publish\package.zip"

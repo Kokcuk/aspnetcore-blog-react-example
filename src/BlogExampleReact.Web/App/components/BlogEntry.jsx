@@ -1,4 +1,5 @@
 ﻿import React from "react";
+import timeSince from '../utils/timeSince';
 
 var containerStyle = {
     'marginBottom':'25px',
@@ -28,13 +29,14 @@ export default class BlogEntry extends React.Component {
 
     render() {
         let content = null;
+
         if(this.state.isEditMode) {
-            content = <div>
+            content = <div className = "fade-enter">
                           <h4><input ref="title" style={inputStyle} onChange={this.handleTitleChange} className="form-control" defaultValue={this.props.blogEntry.title}/> 
                           <a onClick={this.handleDeleteClick} className="btn btn-danger btn-xs pull-right" style={editButtonStyle}>Delete</a>
                           <a onClick={this.handleSaveClick} className="btn btn-primary btn-xs pull-right" style={editButtonStyle}>Save</a>
                           
-                              <small className="pull-right">{this.props.blogEntry.createDate}</small></h4> 
+                              <small className="pull-right">{timeSince(this.props.blogEntry.createDate)}</small></h4> 
                             <textarea ref="text" className="form-control" onChange={this.handleTextChange} style={textareaStyle} defaultValue={this.props.blogEntry.text}></textarea>
                             <small>holla</small>  
                       </div>;
@@ -43,7 +45,7 @@ export default class BlogEntry extends React.Component {
                           <h4>{this.props.blogEntry.title} 
                             {userAuthorized?<a onClick={this.handleEditClick} className="btn btn-primary btn-xs pull-right" style={editButtonStyle}>Edit</a>:""}
                                
-                              <small className="pull-right">{this.props.blogEntry.createDate}</small></h4>
+                              <small className="pull-right">{timeSince(this.props.blogEntry.createDate)}</small></h4>
                             <p>{this.props.blogEntry.text}</p>
                             <small>holla</small>  
                       </div>;

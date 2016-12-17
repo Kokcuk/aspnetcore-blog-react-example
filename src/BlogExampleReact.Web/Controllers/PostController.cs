@@ -35,7 +35,14 @@ namespace BlogExampleReact.Web.Controllers
             entity.Text = model.Text;
             this.dbContext.SaveChanges();
 
-            return Ok();
+            var postModel = new PostModel
+            {
+                Id = entity.Id,
+                CreateDate = entity.CreateDate,
+                Title = entity.Title,
+                Text = entity.Text
+            };
+            return Json(postModel);
         }
 
         [Authorize]

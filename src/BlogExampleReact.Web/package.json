@@ -17,6 +17,7 @@
         "redux-devtools": "*",
         "redux-devtools-log-monitor": "*",
         "redux-devtools-dock-monitor": "*",
+        "react-flip-move": "*",
         "redux-thunk": "*",
         "axios": "*",
         "redux": "*",
@@ -25,6 +26,7 @@
     },
     "scripts": {
         "build": "webpack --progress --colors",
+        "build:prod": "webpack --progress --colors -p --config webpack.production.config.js",
         "start": "webpack-dev-server --hot --inline --progress --colors"
     }
 }

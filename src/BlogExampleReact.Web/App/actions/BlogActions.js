@@ -9,8 +9,7 @@ export function addBlogEntry(blogEntry) {
 
         axios.post('api/post/AddOrUpdate', blogEntry)
         .then(function(response) {
-                dispatch({type:types.ADD_BLOG_ENTRY, status:requestStatus.SUCCESS});
-                dispatch(fetchBlogEntries());
+                dispatch({type:types.ADD_BLOG_ENTRY, status:requestStatus.SUCCESS, blogEntry: response.data});
 
             }).catch(function (error) {
             dispatch({type:types.ADD_BLOG_ENTRY, status:requestStatus.FAIL});
@@ -55,9 +54,7 @@ export function deleteBlogEntry(id) {
 
         axios.post('api/post/delete', {id:id})
         .then(function(response) {
-            dispatch({type:types.DELETE_BLOG_ENTRY, status:requestStatus.SUCCESS});
-            dispatch(fetchBlogEntries());
-
+            dispatch({type:types.DELETE_BLOG_ENTRY, status:requestStatus.SUCCESS, id:id});
         }).catch(function (error) {
             dispatch({type:types.DELETE_BLOG_ENTRY, status:requestStatus.FAIL});
             console.log(error);

@@ -8,6 +8,11 @@ export default class AddBlogEntry extends React.Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            title: "",
+            text: ""
+        }
+
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleTextChange = this.handleTextChange.bind(this);
         this.handleAddBlogEntry = this.handleAddBlogEntry.bind(this);
@@ -40,6 +45,7 @@ export default class AddBlogEntry extends React.Component {
       clearForm() {
           this.refs.title.value = "";
           this.refs.text.value = "";
+          this.setState({title: "", text:""});
       }
 
       handleAddBlogEntry(e) {
